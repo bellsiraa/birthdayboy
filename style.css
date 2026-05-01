@@ -1,0 +1,219 @@
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Patrick Hand', cursive;
+  background:#fff8fb;
+  overflow:hidden;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
+
+.container{
+  text-align:center;
+  z-index:5;
+}
+
+.top-text,
+.bottom-text{
+  font-size:2.3rem;
+  color:#222;
+  margin:20px 0;
+}
+
+.envelope-wrapper{
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+.envelope-wrapper:hover{
+  transform:scale(1.05) rotate(-2deg);
+}
+
+.envelope{
+  position:relative;
+  width:320px;
+  height:220px;
+  background:#f26d7d;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 15px 30px rgba(0,0,0,0.15);
+}
+
+.envelope::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#ff95a2;
+  clip-path:polygon(0 0, 50% 52%, 100% 0);
+}
+
+.envelope::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#e7596a;
+  clip-path:polygon(0 100%, 50% 52%, 100% 100%);
+}
+
+.heart{
+  position:absolute;
+  width:45px;
+  height:45px;
+  background:#ff214f;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%) rotate(45deg);
+  z-index:2;
+  animation:pulse 1.5s infinite;
+}
+
+.heart::before,
+.heart::after{
+  content:"";
+  position:absolute;
+  width:45px;
+  height:45px;
+  background:#ff214f;
+  border-radius:50%;
+}
+
+.heart::before{
+  top:-22px;
+  left:0;
+}
+
+.heart::after{
+  left:-22px;
+  top:0;
+}
+
+@keyframes pulse{
+  0%,100%{
+    transform:translate(-50%, -50%) rotate(45deg) scale(1);
+  }
+  50%{
+    transform:translate(-50%, -50%) rotate(45deg) scale(1.1);
+  }
+}
+
+.letter-popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  z-index:20;
+}
+
+.letter{
+  background:white;
+  width:100%;
+  max-width:620px;
+  padding:45px;
+  border-radius:24px;
+  line-height:1.9;
+  position:relative;
+  animation:popup 0.4s ease;
+  box-shadow:0 20px 45px rgba(0,0,0,0.2);
+}
+
+.letter h1{
+  text-align:center;
+  color:#e84d6b;
+  margin-bottom:20px;
+  font-size:3rem;
+}
+
+.letter p{
+  font-size:1.7rem;
+  color:#333;
+}
+
+.signature{
+  margin-top:25px;
+}
+
+.close-btn{
+  position:absolute;
+  top:12px;
+  right:18px;
+  border:none;
+  background:none;
+  font-size:2rem;
+  cursor:pointer;
+  color:#999;
+}
+
+@keyframes popup{
+  from{
+    transform:scale(0.7);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+.hearts{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+
+.floating-heart{
+  position:absolute;
+  bottom:-20px;
+  color:#ff7b95;
+  animation:float linear forwards;
+  opacity:0.7;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(0) rotate(0deg);
+    opacity:0;
+  }
+  10%{
+    opacity:0.8;
+  }
+  to{
+    transform:translateY(-120vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+@media(max-width:600px){
+
+  .top-text,
+  .bottom-text{
+    font-size:1.7rem;
+  }
+
+  .envelope{
+    width:260px;
+    height:180px;
+  }
+
+  .letter{
+    padding:30px;
+  }
+
+  .letter h1{
+    font-size:2.2rem;
+  }
+
+  .letter p{
+    font-size:1.3rem;
+  }
+}
